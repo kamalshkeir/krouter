@@ -43,4 +43,9 @@ var (
 	generateSwaggerJson   = false
 	generateGoComments    = true
 	docsPatterns          = []*Route{}
+	// ctx cookies
+	COOKIES_Expires  = 24 * 7 * time.Hour
+	COOKIES_SameSite = http.SameSiteStrictMode
+	COOKIES_HttpOnly = true
+	COOKIES_Secure   = false
 )
