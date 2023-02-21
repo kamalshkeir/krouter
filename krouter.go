@@ -344,10 +344,14 @@ func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 					return
 				}
 				if conn != nil {
+					var ctxParams Params
+					if prms != nil {
+						ctxParams = *prms
+					}
 					ctx := &WsContext{
 						Router:    r,
 						Ws:        conn,
-						CtxParams: *prms,
+						CtxParams: ctxParams,
 						Route:     &Route{Method: req.Method, Pattern: path, WsHandler: root.wshandler, Clients: make(map[string]*ws.Conn)},
 						Request:   req,
 					}
