@@ -494,9 +494,9 @@ func (router *Router) Run(addr string) {
 		DocsGeneralDefaults.Host = ADDRESS
 		for method, routes := range router.allRoutes {
 			if method != "SSE" && method != "WS" {
-				for _, r := range routes {
+				for i, r := range routes {
 					if r.Docs != nil && r.Docs.Triggered {
-						docsPatterns = append(docsPatterns, &r)
+						docsPatterns = append(docsPatterns, &routes[i])
 					}
 				}
 			}
